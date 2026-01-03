@@ -28,7 +28,7 @@ scene.add(gridHelper);
 // AXES HELPER
 // Shows X, Y, Z axes with color coding
 // ============================================
-const axesHelper = new THREE.AxesHelper(5); // Size: 5 units long
+const axesHelper = new THREE.AxesHelper(10); // Size: 5 units long
 scene.add(axesHelper);
 
 // Color coding (standard in 3D software):
@@ -49,11 +49,11 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 // Position camera to get a good initial view
-camera.position.set(0, 3, 6);
+camera.position.set(0, 3, 10);
 // This puts us:
 // - At center horizontally (x=0)
 // - 3 units up (y=3)
-// - 6 units back (z=6)
+// - 20 units front (z=20)
 
 // ============================================
 // ORBIT CONTROLS - The Game Changer!
@@ -106,15 +106,6 @@ controls.maxAzimuthAngle = Infinity; // No limit (can spin freely)
 // TARGET - What point the camera orbits around
 controls.target.set(0, 1, 0); // Orbit around point (0, 1, 0)
 // By default, it's (0, 0, 0) but we raised it to look at our objects better
-
-// KEYS - Keyboard controls for panning (optional)
-controls.keys = {
-  LEFT: "ArrowLeft",
-  UP: "ArrowUp",
-  RIGHT: "ArrowRight",
-  BOTTOM: "ArrowDown",
-};
-controls.enableKeys = true; // Enable keyboard controls
 
 // 3. Create geometries
 const icosahedronGeometry = new THREE.IcosahedronGeometry(1, 1);
@@ -223,9 +214,19 @@ rotateToggle.addEventListener("change", (e) => {
 
 // Reset camera to initial position
 resetCamera.addEventListener("click", () => {
-  camera.position.set(0, 3, 6);
+  camera.position.set(0, 3, 10);
   controls.target.set(0, 1, 0);
   controls.update();
+});
+
+// Grid helper toggle
+gridToggle.addEventListener("change", (e) => {
+  gridHelper.visible = e.target.checked;
+});
+
+// Axes helper toggle
+axesToggle.addEventListener("change", (e) => {
+  axesHelper.visible = e.target.checked;
 });
 
 // Top view (bird's eye)
@@ -240,16 +241,6 @@ sideView.addEventListener("click", () => {
   camera.position.set(10, 3, 0);
   controls.target.set(0, 1, 0);
   controls.update();
-});
-
-// Grid helper toggle
-gridToggle.addEventListener("change", (e) => {
-  gridHelper.visible = e.target.checked;
-});
-
-// Axes helper toggle
-axesToggle.addEventListener("change", (e) => {
-  axesHelper.visible = e.target.checked;
 });
 
 // 8. Animation loop
