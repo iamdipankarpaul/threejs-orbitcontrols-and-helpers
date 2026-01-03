@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OrbitControls & Helpers Demo</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+      }
+      canvas {
+        display: block;
+      }
+      #info {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 13px;
+        max-width: 300px;
+      }
+      #info h3 {
+        margin-top: 0;
+        color: #4ecdc4;
+      }
+      #info ul {
+        margin: 10px 0;
+        padding-left: 20px;
+      }
+      #info li {
+        margin: 5px 0;
+      }
+      #controls {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 13px;
+        max-width: 280px;
+      }
+      #controls h3 {
+        margin-top: 0;
+        color: #4ecdc4;
+      }
+      .control-group {
+        margin: 12px 0;
+      }
+      .control-group label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 8px;
+      }
+      input[type="checkbox"] {
+        margin-right: 8px;
+      }
+      button {
+        background: #4ecdc4;
+        color: black;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px 5px 5px 0;
+        font-weight: bold;
+        font-size: 12px;
+      }
+      button:hover {
+        background: #45b8af;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <div id="info">
+      <h3>OrbitControls Usage</h3>
+      <ul>
+        <li><strong>Left Mouse:</strong> Rotate camera</li>
+        <li><strong>Right Mouse:</strong> Pan camera</li>
+        <li><strong>Mouse Wheel:</strong> Zoom in/out</li>
+        <li><strong>Touch (1 finger):</strong> Rotate</li>
+        <li><strong>Touch (2 fingers):</strong> Zoom & pan</li>
+      </ul>
+    </div>
+
+    <div id="controls">
+      <h3>Control Settings</h3>
+      <div class="control-group">
+        <label>
+          <input type="checkbox" id="dampingToggle" checked />
+          Enable Damping
+        </label>
+        <label>
+          <input type="checkbox" id="autoRotateToggle" />
+          Auto Rotate
+        </label>
+        <label>
+          <input type="checkbox" id="panToggle" checked />
+          Enable Pan
+        </label>
+        <label>
+          <input type="checkbox" id="zoomToggle" checked />
+          Enable Zoom
+        </label>
+        <label>
+          <input type="checkbox" id="rotateToggle" checked />
+          Enable Rotate
+        </label>
+      </div>
+      <div class="control-group">
+        <button id="resetCamera">Reset Camera</button>
+        <button id="topView">Top View</button>
+        <button id="sideView">Side View</button>
+      </div>
+      <div class="control-group">
+        <label>
+          <input type="checkbox" id="gridToggle" checked />
+          Show Grid
+        </label>
+        <label>
+          <input type="checkbox" id="axesToggle" checked />
+          Show Axes
+        </label>
+      </div>
+    </div>
+    <script type="module" src="/src/helpers-and-orbitcontrols.js"></script>
+  </body>
+</html>
